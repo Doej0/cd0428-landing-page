@@ -40,6 +40,30 @@
 
 // build the nav
 
+//event listener checking for the DOM to be loaded
+document.addEventListener("DOMContentLoaded", () => {
+
+    //retrieving nav container
+    const navContainer = document.getElementById("navbar__list")
+
+    //data from the sections
+    const sections = document.querySelectorAll('section');
+
+    //build nav items based on the sections    
+    sections.forEach(section => {
+        const sectionID = section.id;
+        const sectionTitle = section.dataset.nav; //use data-nav attributes for each section
+
+        let listItem = document.createElement("li");
+        let a = document.createElement("a");
+        a.href = `#${sectionID}`;
+        a.textContent = sectionTitle; //text without HTML tags
+        a.classList.add("menu__link"); //add menu__link class
+        listItem.appendChild(a); //add anchor to li
+        navContainer.appendChild(li); //add li to navigation container
+    })
+
+});
 
 // Add class 'active' to section when near top of viewport
 
@@ -50,7 +74,7 @@
 /**
  * End Main Functions
  * Begin Events
- * 
+ *
 */
 
 // Build menu 
