@@ -1,9 +1,28 @@
-# Landing Page Project
 
-## Instructions
+<br/>
+<div align="center">
 
-The starter project has some HTML and CSS styling to display a static version of the Landing Page project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+<h3 align="center">Landing Page Project</h3>
+<p align="center">
+Interactive Landing Page using HTML,CSS & JavaScript
 
-To get started, open `js/app.js` and start building out the app's functionality
 
-For specific, detailed instructions, look at the project instructions in the Udacity Classroom.
+  
+
+
+</p>
+</div>
+
+## About The Project
+
+
+
+This project showcases the creation of an interactive website through dynamic DOM manipulation. The landing page includes multiple sections, with a navigation menu that is generated dynamically. For an enhanced user experience, clicking on any navigation item smoothly scrolls the page to the corresponding section, highlighting the active section as you view it.
+### Built With
+
+
+This project is built using HTML, CSS, and JavaScript, with an emphasis on dynamic DOM manipulation.
+
+- [JS](https://developer.mozilla.org/en-US/)
+- [CSS](https://developer.mozilla.org/en-US/)
+- [HTML](https://developer.mozilla.org/en-US/)
