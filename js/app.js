@@ -61,47 +61,66 @@ function makeActive() {
     }
 }
 
+// function to implement smooth scroll
+//argument targetSection will refer to section element to scroll to
+function smoothScrollToSection(targetSection) {
+    //scroll page until target section is in view
+    // https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView
+    targetSection.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
+}
 
 /**
  * End Helper Functions
  * Begin Main Functions
- * 
 */
 
 // build the nav
-
-//event listener checking for the DOM to be loaded
 document.addEventListener("DOMContentLoaded", () => {
 
-    //retrieving nav container
-    const navContainer = document.getElementById("navbar__list")
+    // Retrieving nav container
+    const navContainer = document.getElementById("navbar__list");
 
-    //data from the sections
+    // Data from the sections
     const sections = document.querySelectorAll('section');
 
-    //build nav items based on the sections    
+    // Build nav items based on the sections    
     sections.forEach(section => {
         const sectionID = section.id;
-        const sectionTitle = section.dataset.nav; //use data-nav attributes for each section
+        const sectionTitle = section.dataset.nav; // Use data-nav attributes for each section
 
         let li = document.createElement("li");
         let a = document.createElement("a");
         a.href = `#${sectionID}`;
-        a.textContent = sectionTitle; //text without HTML tags
-        a.classList.add("menu__link"); //add menu__link class
-        li.appendChild(a); //add anchor to li
-        navContainer.appendChild(li); //add li to navigation container
-    })
+        a.textContent = sectionTitle; // Text without HTML tags
+        a.classList.add("menu__link"); // Add menu__link class
+        li.appendChild(a); // Add anchor to li
+        navContainer.appendChild(li); // Add li to navigation container
+    });
 
+
+    // Add an event listener to each navigation link after they are created
+    const navLinks = document.querySelectorAll('.menu__link');
+    navLinks.forEach(link => {
+      link.addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent default link behavior
+        
+        // Get the target section's ID
+        const targetId = this.getAttribute('href');
+        
+        // Find the section with that ID
+        const targetSection = document.querySelector(targetId);
+        
+        smoothScrollToSection(targetSection); 
+      });
+    });
 });
 
-// Add class 'active' to section when near top of viewport
-
-
-// Scroll to anchor ID using scrollTO event
-//Call the makeActive() function whenever the user scrolls the page.
-document.addEventListener("scroll", function () {
-    makeActive();
+// Call the makeActive() function whenever the user scrolls the page
+window.addEventListener('scroll', function() {
+    makeActive(); // Call makeActive function on scroll
 });
 
 /**
